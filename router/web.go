@@ -7,9 +7,9 @@ import (
 )
 
 func InitWeb(r *gin.Engine) {
-	r.GET("/", controllers.Index)
+	r.Any("/", controllers.Index)
 	r.GET("/login", controllers.Login)
 	r.POST("/dologin", controllers.DoLogin)
-	user := r.Group("/").Use(middlewares.Auth)
-	user.GET("user/show", controllers.Index)
+	user := r.Group("/", middlewares.Auth)
+	user.Any("user/show", controllers.UserShow)
 }
