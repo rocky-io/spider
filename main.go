@@ -14,7 +14,7 @@ import (
 )
 
 func main() {
-	f, _ := os.Create("./logs/main.log")
+	f, _ := os.Create("runtime/logs/main.log")
 	gin.DefaultWriter = io.MultiWriter(f, os.Stdout)
 	r := gin.Default()
 	router.InitRouter(r)
